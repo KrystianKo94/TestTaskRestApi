@@ -11,7 +11,7 @@ class ZadanieModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
-    protected $returnType       = 'App\Entitites\ZadanieEntity';
+    protected $returnType       = 'App\Entities\ZadanieEntity';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ["name","currency_code","exchange_rate"];
@@ -41,6 +41,6 @@ class ZadanieModel extends Model
     protected $afterDelete    = [];
     
     public function findIdByCurrencyCode($currency){
-       $data=$this->where("currency_code",$currency)->first();
+       return $this->where("currency_code",$currency)->first();
     }
 }
