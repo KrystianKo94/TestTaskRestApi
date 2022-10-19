@@ -14,7 +14,7 @@ class ZadanieModel extends Model
     protected $returnType       = 'App\Entities\ZadanieEntity';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["name","currency_code","exchange_rate"];
+    protected $allowedFields    = ["name","currency_code","exchange_rate","id"];
 
     // Dates
     protected $useTimestamps = false;

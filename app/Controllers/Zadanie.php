@@ -16,13 +16,13 @@ class Zadanie extends BaseController
     }
     
     public function currencyExchange(){
+        $uuid = service('uuid');
+        $uuid4 = $uuid->uuid4();
         $zadanieModel=new ZadanieModel();
         $zadanieEntity= new ZadanieEntity();
-        //echo var_dump(Services::CurrencyService()[0]->rates[0]->code);
         $arraycurrency=Services::CurrencyService()[0]->rates;
-        log_message('debug','Zadanie::currencyExchange');
+        log_message('debug','[Zadanie::currencyExchange]::Wykonanie petli oraz warunku sprawdzajacego czy dane znajduja sie w bazie, czy tez nie');
         foreach($arraycurrency as $currency){
-         //echo var_dump($currency); //$currency->code."\n";
             echo $currency->code;
             echo "\n";
             $zadanieEntity=$zadanieModel->findIdByCurrencyCode($currency->code);
@@ -31,11 +31,12 @@ class Zadanie extends BaseController
             $zadanieEntity->setName($currency->currency);
             $zadanieEntity->setCurrencyCode($currency->code);
             $zadanieEntity->setCurrencyExchange($currency->mid);
-            $zadanieModel->save($zadanieEntity);
+            $zadanieEntity->setId($uuid->uuid4()->toString());
+            $zadanieModel->insert($zadanieEntity);
             }
             else{
             $zadanieEntity->setCurrencyExchange($currency->mid);
-            $zadanieModel->update(['currency_code'=>$currency->code],['exchange_rate'=>$currency->mid]);
+            $zadanieModel->save($zadanieEntity);
             }
             
         }

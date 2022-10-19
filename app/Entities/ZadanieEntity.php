@@ -14,7 +14,7 @@ class ZadanieEntity extends Entity
         return $this->attributes["name"];
     }
     
-      public function SetName($name){
+      public function setName($name){
          $this->attributes["name"]=$name;
     }
     
@@ -23,7 +23,7 @@ class ZadanieEntity extends Entity
     }
     
     public function setCurrencyCode($code){
-        return $this->attributes["currency_code"]=$code;
+         $this->attributes["currency_code"]=$code;
     }
     
     public function getCurrencyExchange(){
@@ -31,7 +31,15 @@ class ZadanieEntity extends Entity
     }
     
      public function setCurrencyExchange($currency){
-        return $this->attributes["exchange_rate"]=$currency;
+         $this->attributes["exchange_rate"]=$currency;
+    }
+    
+     public function getId(){
+        return $this->attributes["id"];
+    }
+    
+    public function setId($id){
+        $this->attributes["id"]=$id;
     }
     
 }
