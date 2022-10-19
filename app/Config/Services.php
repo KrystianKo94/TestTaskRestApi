@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseService;
+use App\Libraries\CurrencyService;
 
 /**
  * Services Configuration file.
@@ -29,4 +30,8 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+    public static function CurrencyService(){
+       return  CurrencyService::init();
+        
+    }
 }
