@@ -14,7 +14,7 @@ class ZadanieModel extends Model
     protected $returnType       = 'App\Entitites\ZadanieEntity';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ["name","currency_code","exchange_rate"];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +39,8 @@ class ZadanieModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    
+    public function findIdByCurrencyCode($currency){
+       $data=$this->where("currency_code",$currency)->first();
+    }
 }

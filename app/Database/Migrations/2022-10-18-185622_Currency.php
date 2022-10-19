@@ -13,7 +13,7 @@ public function up()
 			'type' => 'VARCHAR',
                         'constraint'=>36,
                 'unique' => TRUE,
-                'default' => 'UUID()',
+                'default' => 'uuid()',
 		'comment' => 'ID '
 			],
 			'name' => [
